@@ -1,21 +1,19 @@
-node('java-agent-01'){
 
-    def maven = tool name: 'maven', type: 'maven'
+node('java-agent-01') {
 
     stage('Checkout SCM'){
         git branch: 'main', url: 'https://github.com/ahmednasr122/jenkins-test'
     }
 
     stage('Build App'){
-        env.PATH = "${maven}/bin:${env.PATH}"
-        sh 'mvn package install -DskipTests'
+        sh 'mvn clean package -DskipTests'
     }
 
-    stage('Archieve App'){
+    stage('Archive App'){
         archiveArtifacts artifacts: '**/*.jar'
     }
 
     stage('Build Docker Image'){
-        sh "docker build -t ahmednasr122/jenkins-test:v${BUILD_NUMBER} ."
+        sh "docker build -t myuser/sysadmin-java:v${BUILD_NUMBER} ."
     }
 }
