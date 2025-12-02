@@ -1,6 +1,6 @@
 node('java-agent-01'){
 
-    def maven = tool name: 'maven-352', type: 'maven'
+    def maven = tool name: 'maven', type: 'maven'
 
     stage('Checkout SCM'){
         git branch: 'main', url: 'https://github.com/ahmednasr122/jenkins-test'
