@@ -14,6 +14,6 @@ node('java-agent-01') {
     }
 
     stage('Build Docker Image'){
-        sh "docker build -t myuser/sysadmin-java:v${BUILD_NUMBER} ."
+        sh "docker build -t ahmednasr12/java01:v${BUILD_NUMBER} ."
     }
 }
